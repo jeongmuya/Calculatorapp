@@ -10,7 +10,10 @@ import SnapKit
 
 class ViewController: UIViewController {
     
-    // 12345
+    // 화면에 표시할 "0"
+    var displayNumber: String = "0"
+    
+    // 12345 -> 초기값 "0" 으로
     let label = UILabel()
     
     // 789+
@@ -99,7 +102,7 @@ class ViewController: UIViewController {
     
     // 12345
     private func setupLabel() {
-        label.text = "12345"
+        label.text = "0"
         label.textColor = .white
         label.font = .systemFont(ofSize: 60, weight: .bold)
         label.textAlignment = .right
@@ -127,8 +130,7 @@ class ViewController: UIViewController {
         button7.setTitleColor(.white, for: .normal)
         button7.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
         button7.layer.cornerRadius = 40
-        
-        view.addSubview(button7)
+        button7.addTarget(self, action: #selector(button7Tapped), for: .touchUpInside)
         
         // 8
         button8.setTitle("8", for: .normal)
@@ -136,8 +138,7 @@ class ViewController: UIViewController {
         button8.setTitleColor(.white, for: .normal)
         button8.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
         button8.layer.cornerRadius = 40
-        
-        view.addSubview(button8)
+        button8.addTarget(self, action: #selector(button8Tapped), for: .touchUpInside)
         
         // 9
         button9.setTitle("9", for: .normal)
@@ -145,8 +146,7 @@ class ViewController: UIViewController {
         button9.setTitleColor(.white, for: .normal)
         button9.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
         button9.layer.cornerRadius = 40
-        
-        view.addSubview(button9)
+        button9.addTarget(self, action: #selector(button9Tapped), for: .touchUpInside)
         
         // +
         buttonPlus.setTitle("+", for: .normal)
@@ -154,8 +154,7 @@ class ViewController: UIViewController {
         buttonPlus.setTitleColor(.white, for: .normal)
         buttonPlus.backgroundColor = .orange
         buttonPlus.layer.cornerRadius = 40
-        
-        view.addSubview(buttonPlus)
+        buttonPlus.addTarget(self, action: #selector(buttonPlusTapped), for: .touchUpInside)
     }
     // 4,5,6,- 버튼
     private func setupButton2() {
@@ -166,8 +165,7 @@ class ViewController: UIViewController {
         button4.setTitleColor(.white, for: .normal)
         button4.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
         button4.layer.cornerRadius = 40
-        
-        view.addSubview(button4)
+        button4.addTarget(self, action: #selector(button4Tapped), for: .touchUpInside)
         
         // 5
         button5.setTitle("5", for: .normal)
@@ -175,8 +173,7 @@ class ViewController: UIViewController {
         button5.setTitleColor(.white, for: .normal)
         button5.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
         button5.layer.cornerRadius = 40
-        
-        view.addSubview(button5)
+        button5.addTarget(self, action: #selector(button5Tapped), for: .touchUpInside)
         
         // 6
         button6.setTitle("6", for: .normal)
@@ -184,8 +181,7 @@ class ViewController: UIViewController {
         button6.setTitleColor(.white, for: .normal)
         button6.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
         button6.layer.cornerRadius = 40
-        
-        view.addSubview(button6)
+        button6.addTarget(self, action: #selector(button6Tapped), for: .touchUpInside)
         
         // -
         buttonMinus.setTitle("-", for: .normal)
@@ -193,8 +189,8 @@ class ViewController: UIViewController {
         buttonMinus.setTitleColor(.white, for: .normal)
         buttonMinus.backgroundColor = .orange
         buttonMinus.layer.cornerRadius = 40
+        buttonMinus.addTarget(self, action: #selector(buttonMinusTapped), for: .touchUpInside)
         
-        view.addSubview(buttonMinus)
     }
     
     // 1,2,3,* 버튼
@@ -206,8 +202,7 @@ class ViewController: UIViewController {
         button1.setTitleColor(.white, for: .normal)
         button1.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
         button1.layer.cornerRadius = 40
-        
-        view.addSubview(button1)
+        button1.addTarget(self, action: #selector(button1Tapped), for: .touchUpInside)
         
         // 2
         button2.setTitle("2", for: .normal)
@@ -215,8 +210,7 @@ class ViewController: UIViewController {
         button2.setTitleColor(.white, for: .normal)
         button2.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
         button2.layer.cornerRadius = 40
-        
-        view.addSubview(button2)
+        button2.addTarget(self, action: #selector(button2Tapped), for: .touchUpInside)
         
         // 3
         button3.setTitle("3", for: .normal)
@@ -224,8 +218,7 @@ class ViewController: UIViewController {
         button3.setTitleColor(.white, for: .normal)
         button3.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
         button3.layer.cornerRadius = 40
-        
-        view.addSubview(button3)
+        button3.addTarget(self, action: #selector(button3Tapped), for: .touchUpInside)
         
         // *
         buttonTimes.setTitle("*", for: .normal)
@@ -233,8 +226,8 @@ class ViewController: UIViewController {
         buttonTimes.setTitleColor(.white, for: .normal)
         buttonTimes.backgroundColor = .orange
         buttonTimes.layer.cornerRadius = 40
-        
-        view.addSubview(buttonTimes)
+        buttonTimes.addTarget(self, action: #selector(buttonTimesTapped), for: .touchUpInside)
+    
     }
     
     // AC,0,=,/ 버튼
@@ -246,8 +239,7 @@ class ViewController: UIViewController {
         buttonAC.setTitleColor(.white, for: .normal)
         buttonAC.backgroundColor = .orange
         buttonAC.layer.cornerRadius = 40
-        
-        view.addSubview(buttonAC)
+        buttonAC.addTarget(self, action: #selector(buttonACTapped), for: .touchUpInside)
         
         // 0
         button0.setTitle("0", for: .normal)
@@ -255,8 +247,7 @@ class ViewController: UIViewController {
         button0.setTitleColor(.white, for: .normal)
         button0.backgroundColor = UIColor(red: 58/255, green: 58/255, blue: 58/255, alpha: 1.0)
         button0.layer.cornerRadius = 40
-        
-        view.addSubview(button0)
+        button0.addTarget(self, action: #selector(button0Tapped), for: .touchUpInside)
         
         // =
         buttonEquals.setTitle("=", for: .normal)
@@ -264,8 +255,7 @@ class ViewController: UIViewController {
         buttonEquals.setTitleColor(.white, for: .normal)
         buttonEquals.backgroundColor = .orange
         buttonEquals.layer.cornerRadius = 40
-        
-        view.addSubview(buttonEquals)
+        buttonEquals.addTarget(self, action: #selector(buttonEqualsTapped), for: .touchUpInside)
         
         // Divide
         buttonDivide.setTitle("/", for: .normal)
@@ -273,8 +263,7 @@ class ViewController: UIViewController {
         buttonDivide.setTitleColor(.white, for: .normal)
         buttonDivide.backgroundColor = .orange
         buttonDivide.layer.cornerRadius = 40
-        
-        view.addSubview(buttonDivide)
+        buttonDivide.addTarget(self, action: #selector(buttonDivideTapped), for: .touchUpInside)
     }
     
     // 스택뷰
@@ -338,4 +327,133 @@ class ViewController: UIViewController {
             make.centerX.equalToSuperview()
         }
     }
+    
+    @objc func button7Tapped() {
+        if label.text == "0" {
+            label.text = "7"
+        } else {
+            label.text = label.text! + "7"
+        }
+    }
+    
+    @objc func button8Tapped() {
+        if label.text == "0" {
+            label.text = "8"
+        } else {
+            label.text = label.text! + "8"
+        }
+    }
+    
+    @objc func button9Tapped() {
+        if label.text == "0" {
+            label.text = "9"
+        } else {
+            label.text = label.text! + "9"
+        }
+    }
+    
+    @objc func buttonPlusTapped() {
+        if label.text == "0" {
+            label.text = "+"
+        } else {
+            label.text = label.text! + "+"
+        }
+    }
+    
+    @objc func button4Tapped() {
+        if label.text == "0" {
+            label.text = "4"
+        } else {
+            label.text = label.text! + "4"
+        }
+    }
+    
+    @objc func button5Tapped() {
+        if label.text == "0" {
+            label.text = "5"
+        } else {
+            label.text = label.text! + "5"
+        }
+    }
+    
+    @objc func button6Tapped() {
+        if label.text == "0" {
+            label.text = "6"
+        } else {
+            label.text = label.text! + "6"
+        }
+    }
+    
+    @objc func buttonMinusTapped() {
+        if label.text == "0" {
+            label.text = "-"
+        } else {
+            label.text = label.text! + "-"
+        }
+    }
+    
+    @objc func button1Tapped() {
+        if label.text == "0" {
+            label.text = "1"
+        } else {
+            label.text = label.text! + "1"
+        }
+    }
+    
+    @objc func button2Tapped() {
+        if label.text == "0" {
+            label.text = "2"
+        } else {
+            label.text = label.text! + "2"
+        }
+    }
+    
+    @objc func button3Tapped() {
+        if label.text == "0" {
+            label.text = "3"
+        } else {
+            label.text = label.text! + "3"
+        }
+    }
+    
+    @objc func buttonTimesTapped() {
+        if label.text == "0" {
+            label.text = "*"
+        } else {
+            label.text = label.text! + "*"
+        }
+    }
+    
+    @objc func buttonACTapped() {
+        if label.text == "0" {
+            label.text = "AC"
+        } else {
+            label.text = label.text! + "AC"
+        }
+    }
+    
+    @objc func button0Tapped() {
+        if label.text == "0" {
+            label.text = "0"
+        } else {
+            label.text = label.text! + "0"
+        }
+    }
+    
+    @objc func buttonEqualsTapped() {
+        if label.text == "0" {
+            label.text = "="
+        } else {
+            label.text = label.text! + "="
+        }
+    }
+    
+    @objc func buttonDivideTapped() {
+        if label.text == "0" {
+            label.text = "/"
+        } else {
+            label.text = label.text! + "/"
+        }
+    }
+    
 }
