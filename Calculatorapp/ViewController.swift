@@ -437,11 +437,9 @@ class ViewController: UIViewController {
     }
     
     @objc func buttonEqualsTapped() {
-        if label.text == "0" {
-            label.text = "="
-        } else {
-            label.text = label.text! + "="
-        }
+        var input = label.text!
+        var result = calculate(expression: input)
+        label.text = "\(result ?? 0)"
     }
     
     @objc func buttonDivideTapped() {
@@ -449,6 +447,15 @@ class ViewController: UIViewController {
             label.text = "/"
         } else {
             label.text = label.text! + "/"
+        }
+    }
+    
+    func calculate(expression: String) -> Int? {
+            let expression = NSExpression(format: expression)
+        if let result = expression.expressionValue(with: nil, context: nil) as? Int {
+            return result
+        } else {
+            return nil
         }
     }
     
