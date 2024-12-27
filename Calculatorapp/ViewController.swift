@@ -425,11 +425,7 @@ class ViewController: UIViewController {
     }
     
     @objc func buttonACTapped() {
-        if label.text == "0" {
-            label.text = "AC"
-        } else {
-            label.text = label.text! + "AC"
-        }
+            label.text = "0"
     }
     
     @objc func button0Tapped() {
